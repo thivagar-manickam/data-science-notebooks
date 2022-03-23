@@ -1,0 +1,77 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+        <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/app.css') }}">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+        <title>House Price Predictor</title>
+    </head>
+
+    <body>
+        <div class="header">
+            <h3>House Price Prediction</h3>
+        </div>
+        <div class="pt-3">
+            <form method="POST" action="/response" id="houseInputForm">
+                <div class="container">
+                    <div class="row">
+                        <div class="col">
+                            <label><b>Choose number of bedrooms <span class="required">*</span></b></label>
+                            <select id="noOfBedrooms" class="form-select" aria-label="number of bedrooms" 
+                            name="bedrooms" required></select>
+                        </div>
+                        <div class="col">
+                            <label><b>Choose number of bathrooms <span class="required">*</span></b></label>
+                            <input type="number" step="0.25" min="1" max="8" name="bathrooms"
+                            required>
+                        </div>
+                        <div class="col">
+                            <label><b>Choose the view <span class="required">*</span></b></label>
+                            <select id="view" class="form-select" aria-label="view value" 
+                            name="view" required></select>
+                        </div>
+                        <div class="col">
+                            <label><b>Choose the Grade <span class="required">*</span></b></label>
+                            <select id="grade" class="form-select" aria-label="grade value" 
+                            name="grade" required></select>
+                        </div>
+                    </div>
+                    <div class="row pt-3">
+                        <div class="col">
+                            <label><b>Pick Sqft Living area <span class="required">*</span></b></label>
+                            <p><b>Living area value: </b><span id="sqftLivingValue"></span></p>
+                            <input type="range" class="form-range" id="sqftLiving" 
+                            min="300" max="15000" step="10" value="300" name="sqftLiving" required>
+                        </div>
+                    </div>
+                    <div class="row pt-3">
+                        <div class="col">
+                            <label><b>Pick Sqft Above ground level <span class="required">*</span></b></label>
+                            <p><b>Above area value: </b><span id="sqftAboveValue"></span></p>
+                            <input type="range" class="form-range" id="sqftAbove" 
+                            min="300" max="10000" step="10" value="300" name="sqftAbove" required>
+                        </div>
+                    </div>
+                    <div class="row pt-3">
+                        <div class="col">
+                            <label><b>Sqft Living Space for 15 neighbours <span class="required">*</span></b></label>
+                            <p><b>Living area for 15 Neighbours value: </b><span id="sqft15Value"></span></p>
+                            <input type="range" class="form-range" id="sqft15" 
+                            min="300" max="7000" step="10" value="300" name="sqft15" required>
+                        </div>
+                    </div>
+                    <div class="row pt-3 item-align-center">
+                        <div class="col">
+                            <button type="submit" class="btn btn-outline-primary">Calculate Price</button>
+                            <button onclick="resetForm()" class="resetButton btn btn-outline-danger">Clear</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <script src="/static/scripts/scripts.js" charset="utf-8"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    </body>
+</html>
